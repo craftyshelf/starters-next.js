@@ -10,13 +10,16 @@
     "lint:fix": "next lint --fix",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
-    "prepare": "node .husky/install.mjs",
+    "prepare": "node .husky/install.mjs || exit 0",
     "preinstall": "npx only-allow pnpm"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,css}": [
+    "*.{js,jsx,ts,tsx}": [
       "prettier --write",
-      "next lint --fix"
+      "eslint --fix"
+    ],
+    "*.{css,scss}": [
+      "prettier --write"
     ]
   },
   "dependencies": {
