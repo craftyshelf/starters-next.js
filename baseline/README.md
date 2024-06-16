@@ -62,7 +62,7 @@ pnpm lint-staged
 ```
 
 package.json
-`"prepare": "node .husky/install.mjs"`
+`"prepare": "node .husky/install.mjs || exit 0",`
 
 install.mjs
 
@@ -79,11 +79,14 @@ package.json
 
 ```js
 "lint-staged": {
-  "*.{js,jsx,ts,tsx,css}": [
-    "prettier --write",
-    "eslint --fix"
-  ]
-},
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{css,scss}": [
+      "prettier --write"
+    ]
+  },
 ```
 
 ## Commands
